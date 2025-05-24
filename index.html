@@ -312,54 +312,7 @@
   const main    = document.getElementById('main-container');
   const builder = document.getElementById('builder-container');
 
-  const phoneId = document.getElementById('phone').value
-
-  // 2) Identify the user in Segment
-  analytics.identify(phoneId, {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    city: document.getElementById('city').value
-  })
-
-  // 2) Sign In
-  document.getElementById('signin-form').addEventListener('submit', e => {
-    e.preventDefault();
-
-    // → Track Sign In click
-    analytics.track("Sign In Clicked", {
-      clicked: true,
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      city: document.getElementById('city').value
-    });
-
-    console.log('Sign In submitted');
-  });
-
-  // 3) Purchase Your Pizza
-  document.getElementById('btn-purchase').addEventListener('click', () => {
-    // → Track Purchase click
-    analytics.track("Purchase Your Pizza Clicked", {
-      clicked: true
-    });
-
-    console.log('Purchase button clicked');
-  });
-
-  // 4) Build Your Perfect Pizza
-  document.getElementById('btn-build').addEventListener('click', () => {
-    main.style.display    = 'none';
-    builder.style.display = 'block';
-
-    // → Track Build click
-    analytics.track("Build Your Perfect Pizza Clicked", {
-      clicked: true
-    });
-    // …and fire your page call
-    analytics.page("Page Viewed", { page: "Toppings" });
-  });
-
-  // 2) Quantity +/- logic (restore this so your plus/minus buttons work again)
+  // 2) Quantity +/- logic (so your plus/minus buttons keep working)
   document.querySelectorAll('.ingredient-card').forEach(card => {
     const minus = card.querySelector('.minus');
     const plus  = card.querySelector('.plus');
@@ -374,27 +327,62 @@
     });
   });
 
-  // 5) My Perfect Pizza (confirm toppings)
+  // 3) Sign In: IDENTIFY + TRACK
+  document.getElementById('signin-form').addEventListener('submit', e => {
+    e.preventDefault();
+
+    // ← Grab user values *after* they click Submit
+    const name   = document.getElementById('name').value;
+    const phone  = document.getElementById('phone').value;
+    const city   = document.getElementById('city').value;
+
+    // ← IDENTIFY with a real, non-empty ID
+    analytics.identify(phone, {
+      name:  name,
+      phone: phone,
+      city:  city
+    });
+
+    // ← Then TRACK the click, including those same traits
+    analytics.track("Sign In Clicked", {
+      clicked: true,
+      name:    name,
+      phone:   phone,
+      city:    city
+    });
+
+    console.log('Sign In submitted and user identified:', { name, phone, city });
+  });
+
+  // 4) Purchase Your Pizza
+  document.getElementById('btn-purchase').addEventListener('click', () => {
+    analytics.track("Purchase Your Pizza Clicked", { clicked: true });
+    console.log('Purchase button clicked');
+  });
+
+  // 5) Build Your Perfect Pizza
+  document.getElementById('btn-build').addEventListener('click', () => {
+    main.style.display    = 'none';
+    builder.style.display = 'block';
+    analytics.track("Build Your Perfect Pizza Clicked", { clicked: true });
+    analytics.page("Page Viewed", { page: "Toppings" });
+  });
+
+  // 6) My Perfect Pizza (confirm toppings)
   document.getElementById('btn-confirm').addEventListener('click', () => {
-    const selections = [];
-    // gather quantities
     let cheese = 0, olives = 0, pepperoni = 0, bacon = 0, corn = 0, hotHoney = 0;
     document.querySelectorAll('.ingredient-card').forEach(card => {
       const name = card.dataset.ingredient;
       const qty  = Number(card.querySelector('input').value);
-      if (qty > 0) selections.push({ name, quantity: qty });
-      // map into our vars
-      if (name === 'Cheese')      cheese = qty;
-      if (name === 'Olives')      olives = qty;
-      if (name === 'Pepperoni')   pepperoni = qty;
-      if (name === 'Bacon')       bacon = qty;
-      if (name === 'Corn')        corn = qty;
-      if (name === 'Hot Honey')   hotHoney = qty;
+      if (name === 'Cheese')    cheese   = qty;
+      if (name === 'Olives')    olives   = qty;
+      if (name === 'Pepperoni') pepperoni= qty;
+      if (name === 'Bacon')     bacon    = qty;
+      if (name === 'Corn')      corn     = qty;
+      if (name === 'Hot Honey') hotHoney = qty;
     });
-
-    // → Track final pizza confirmation
     analytics.track("My Perfect Pizza Clicked", {
-      clicked: true,
+      clicked:  true,
       cheese,
       olives,
       pepperoni,
@@ -402,28 +390,20 @@
       corn,
       hotHoney
     });
-
-    console.log('My Perfect Pizza:', selections);
-    // return to main view
+    console.log('My Perfect Pizza:', { cheese, olives, pepperoni, bacon, corn, hotHoney });
     builder.style.display = 'none';
     main.style.display    = 'block';
   });
 
-  // 6) Merch Store
+  // 7) Merch Store
   document.getElementById('btn-merch').addEventListener('click', () => {
-    // → Track Merch click
-    analytics.track("Merch Store Clicked", {
-      clicked: true
-    });
+    analytics.track("Merch Store Clicked", { clicked: true });
     console.log('Merch Store clicked');
   });
 
-  // 7) Widget (WhatsApp)
+  // 8) Widget (WhatsApp)
   document.getElementById('widget-btn').addEventListener('click', () => {
-    // → Track Widget click
-    analytics.track("Widget Clicked", {
-      clicked: true
-    });
+    analytics.track("Widget Clicked", { clicked: true });
     console.log('Widget clicked');
     window.open('https://wa.me/5521973015191', '_blank');
   });
