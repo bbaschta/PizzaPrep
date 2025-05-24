@@ -1,412 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Domino's Demo</title>
-  <script>
-  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="HnyTwxI8tDDH62KYqGGcoNeO9kfHzaun";;analytics.SNIPPET_VERSION="5.2.0";
-  analytics.load("HnyTwxI8tDDH62KYqGGcoNeO9kfHzaun");
-  analytics.page();
-  }}();
-</script>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    /* === Palette & Reset === */
-    :root {
-      --primary-red:   #e31837;
-      --primary-blue:  #006491;
-      --off-white:     #fff7f7;
-      --white:         #ffffff;
-      --form-bg:       #fdf0f2;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--off-white);
-      color: #333;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 420px;
-      margin: 2rem auto;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    .header-image {
-      width: 50%;
-      display: block;
-      margin: 1rem auto 0;
-    }
-    .content {
-      padding: 1.5rem;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: var(--primary-red);
-      font-weight: 700;
-    }
-    /* === Form === */
-    .form-container {
-      background: var(--form-bg);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #e0e0e0;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    label { font-size: .9rem; }
-    input, select {
-      padding: .6rem .75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      transition: border-color .2s;
-    }
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--primary-red);
-    }
-    /* === Buttons === */
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-    }
-    .buttons button,
-    #btn-confirm {
-      padding: .75rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: transform .1s, box-shadow .1s;
-      color: #fff;
-      display: block;
-      width: 100%;
-    }
-    .buttons button:hover,
-    #btn-confirm:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .purchase { background: var(--primary-red); }
-    .build    { background: var(--primary-blue); }
-    .merch    {
-      background: grey;
-      color: var(--primary-red);
-      border: 2px solid var(--primary-red);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domino's Demo</title>
+    <script>
+      !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="HnyTwxI8tDDH62KYqGGcoNeO9kfHzaun";;analytics.SNIPPET_VERSION="5.2.0";
+      analytics.load("HnyTwxI8tDDH62KYqGGcoNeO9kfHzaun");
+      analytics.page();
+      }}();
+    </script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      /* Palette */
+      :root {
+        --primary-red: #e31837;
+        --primary-blue: #006491;
+        --off-white: #fff7f7;
+        --white: #ffffff;
+        --form-bg: #fdf0f2;
+      }
 
-    /* === Builder View === */
-    #builder-container { display: none; }
-    .ingredients-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 1rem;
-      margin: 1rem 0 1.5rem;
-    }
-    .ingredient-card {
-      border: 1px solid var(--primary-red);
-      border-radius: 8px;
-      padding: .75rem;
-      text-align: center;
-    }
-    .ingredient-card img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: .5rem;
-    }
-    .quantity-selector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      margin-bottom: .5rem;
-    }
-    .quantity-selector button {
-      width: 28px;
-      height: 28px;
-      border: none;
-      background: var(--primary-red);
-      color: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
-    }
-    .quantity-selector input {
-      width: 60px;
-      text-align: right;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: #fff;
-      color: black;
-      font-size: 1rem;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* === Widget === */
-    .widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--primary-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 1000;
-      transition: transform .1s, box-shadow .1s;
-    }
-    .widget:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    }
-    .widget img {
-      width: 70%; height: 70%; object-fit: contain;
-    }
-  </style>
-</head>
-<body>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: var(--off-white);
+        color: #333;
+        line-height: 1.6;
+      }
 
-  <!-- MAIN / SIGN-IN -->
-  <div id="main-container" class="container">
-    <img src="https://cdn.iconscout.com/icon/free/png-256/free-dominos-pizza-logo-icon-download-in-svg-png-gif-file-formats--food-italian-slice-logos-pack-icons-1581234.png"
-         alt="Domino's Pizza" class="header-image"/>
-    <div class="content">
-      <h1>Domino’s</h1>
+      .container {
+        max-width: 420px;
+        margin: 2rem auto;
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
 
-      <div class="form-container">
-        <form id="signin-form">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required/>
+      .header-image {
+        width: 50%;
+        display: block;
+        margin: 1rem auto 0;
+      }
 
-          <label for="phone">Phone Number</label>
-          <input
-            type="tel" id="phone" name="phone"
-            placeholder="(123) 456-7890"
-            inputmode="tel"
-            pattern="^(\d{10}|\d{13})$"
-            title="10-digit US or 13-digit BR"
-            required
-          />
+      .content {
+        padding: 1.5rem;
+      }
 
-          <label for="city">City</label>
-          <select id="city" name="city" required>
-            <option value="">Select your city</option>
-            <option value="New York">New York</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Houston">Houston</option>
-          </select>
+      h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--primary-red);
+        font-weight: 700;
+      }
 
-          <button type="submit" class="purchase">Sign In</button>
-        </form>
-      </div>
+      /* Form */
+      .form-container {
+        background: var(--form-bg);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e0e0e0;
+      }
 
-      <div class="buttons">
-        <button id="btn-purchase" class="purchase">Purchase Your Pizza</button>
-        <button id="btn-build"    class="build">Build Your Perfect Pizza</button>
-        <button id="btn-merch"    class="merch">Merch Store</button>
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      label {
+        font-size: .9rem;
+      }
+
+      input,
+      select {
+        padding: .6rem .75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: border-color .2s;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--primary-red);
+      }
+
+      /* Buttons */
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+      }
+
+      .buttons button,
+      #btn-confirm {
+        padding: .75rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: transform .1s, box-shadow .1s;
+        color: #fff;
+        display: block;
+        width: 100%;
+      }
+
+      .buttons button:hover,
+      #btn-confirm:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .purchase {
+        background: var(--primary-red);
+      }
+
+      .build {
+        background: var(--primary-blue);
+      }
+
+      .merch {
+        background: grey;
+        color: var(--primary-red);
+        border: 2px solid var(--primary-red);
+      }
+
+      /* Toppings */
+      #builder-container {
+        display: none;
+      }
+
+      .ingredients-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .ingredient-card {
+        border: 1px solid var(--primary-red);
+        border-radius: 8px;
+        padding: .75rem;
+        text-align: center;
+      }
+
+      .ingredient-card img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: .5rem;
+      }
+
+      .quantity-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+        margin-bottom: .5rem;
+      }
+
+      .quantity-selector button {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: var(--primary-red);
+        color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .quantity-selector input {
+        width: 60px;
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: black;
+        font-size: 1rem;
+      }
+
+      /* wa.me Widget */
+      .widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        transition: transform .1s, box-shadow .1s;
+      }
+
+      .widget:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      .widget img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Page + Sign Up -->
+    <div id="main-container" class="container">
+      <img src="https://cdn.iconscout.com/icon/free/png-256/free-dominos-pizza-logo-icon-download-in-svg-png-gif-file-formats--food-italian-slice-logos-pack-icons-1581234.png" alt="Domino's Pizza" class="header-image" />
+      <div class="content">
+        <h1>Domino’s</h1>
+        <div class="form-container">
+          <form id="signin-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" inputmode="tel" pattern="^(\d{10}|\d{13})$" title="10-digit US or 13-digit BR" required />
+            <label for="city">City</label>
+            <select id="city" name="city" required>
+              <option value="">Select your city</option>
+              <option value="New York">New York</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Los Angeles">Los Angeles</option>
+              <option value="Houston">Houston</option>
+            </select>
+            <button type="submit" class="purchase">Sign In</button>
+          </form>
+        </div>
+        <div class="buttons">
+          <button id="btn-purchase" class="purchase">Purchase Your Pizza</button>
+          <button id="btn-build" class="build">Build Your Perfect Pizza</button>
+          <button id="btn-merch" class="merch">Merch Store</button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- BUILDER VIEW -->
-  <div id="builder-container" class="container">
-    <img src="https://cdn.iconscout.com/icon/free/png-256/free-dominos-pizza-logo-icon-download-in-svg-png-gif-file-formats--food-italian-slice-logos-pack-icons-1581234.png"
-         alt="Domino's Pizza" class="header-image"/>
-    <div class="content">
-      <h1>Pick Your Toppings</h1>
-      <div class="ingredients-grid">
-        <!-- Card: Cheese -->
-        <div class="ingredient-card" data-ingredient="Cheese">
-          <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2020/06/shredded-cheese.jpg?quality=82&strip=1" alt="Cheese"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+    <!-- Toppings Page -->
+    <div id="builder-container" class="container">
+      <img src="https://cdn.iconscout.com/icon/free/png-256/free-dominos-pizza-logo-icon-download-in-svg-png-gif-file-formats--food-italian-slice-logos-pack-icons-1581234.png" alt="Domino's Pizza" class="header-image" />
+      <div class="content">
+        <h1>Pick Your Toppings</h1>
+        <div class="ingredients-grid">
+          <!-- Card: Cheese -->
+          <div class="ingredient-card" data-ingredient="Cheese">
+            <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2020/06/shredded-cheese.jpg?quality=82&strip=1" alt="Cheese" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Cheese</small>
           </div>
-          <small>Cheese</small>
-        </div>
-        <!-- Card: Olives -->
-        <div class="ingredient-card" data-ingredient="Olives">
-          <img src="https://images.immediate.co.uk/production/volatile/sites/30/2024/05/Olives440-91d78b2.jpg" alt="Olives"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+          <!-- Card: Olives -->
+          <div class="ingredient-card" data-ingredient="Olives">
+            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2024/05/Olives440-91d78b2.jpg" alt="Olives" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Olives</small>
           </div>
-          <small>Olives</small>
-        </div>
-        <!-- Card: Bacon -->
-        <div class="ingredient-card" data-ingredient="Bacon">
-          <img src="https://charcutaria.org/wp-content/uploads/2022/01/bacon-defumado-artesanal-1.jpg" alt="Bacon"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+          <!-- Card: Bacon -->
+          <div class="ingredient-card" data-ingredient="Bacon">
+            <img src="https://charcutaria.org/wp-content/uploads/2022/01/bacon-defumado-artesanal-1.jpg" alt="Bacon" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Bacon</small>
           </div>
-          <small>Bacon</small>
-        </div>
-        <!-- Card: Corn -->
-        <div class="ingredient-card" data-ingredient="Corn">
-          <img src="https://www.talleys.co.nz/_resized/assets/2804/Corn-Kernel_18ad78ee55105ddb3f94e30f4af8cdd1.jpg" alt="Corn"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+          <!-- Card: Corn -->
+          <div class="ingredient-card" data-ingredient="Corn">
+            <img src="https://www.talleys.co.nz/_resized/assets/2804/Corn-Kernel_18ad78ee55105ddb3f94e30f4af8cdd1.jpg" alt="Corn" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Corn</small>
           </div>
-          <small>Corn</small>
-        </div>
-        <!-- Card: Pepperoni -->
-        <div class="ingredient-card" data-ingredient="Pepperoni">
-          <img src="https://dcdn-us.mitiendanube.com/stores/001/135/059/products/pepperoni-fatiado-21-e7551792b90c16210816874677250952-640-0.jpg" alt="Pepperoni"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+          <!-- Card: Pepperoni -->
+          <div class="ingredient-card" data-ingredient="Pepperoni">
+            <img src="https://dcdn-us.mitiendanube.com/stores/001/135/059/products/pepperoni-fatiado-21-e7551792b90c16210816874677250952-640-0.jpg" alt="Pepperoni" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Pepperoni</small>
           </div>
-          <small>Pepperoni</small>
-        </div>
-        <!-- Card: Hot Honey -->
-        <div class="ingredient-card" data-ingredient="Hot Honey">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRg1G0bb6vgE7sHs9hfUWEFjvnS4Rq6V7JZA&s" alt="Hot Honey"/>
-          <div class="quantity-selector">
-            <button class="minus">−</button>
-            <input type="number" min="0" value="0"/>
-            <button class="plus">+</button>
+          <!-- Card: Hot Honey -->
+          <div class="ingredient-card" data-ingredient="Hot Honey">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRg1G0bb6vgE7sHs9hfUWEFjvnS4Rq6V7JZA&s" alt="Hot Honey" />
+            <div class="quantity-selector">
+              <button class="minus">−</button>
+              <input type="number" min="0" value="0" />
+              <button class="plus">+</button>
+            </div>
+            <small>Hot Honey</small>
           </div>
-          <small>Hot Honey</small>
         </div>
+        <button id="btn-confirm" class="purchase">My Perfect Pizza</button>
       </div>
-      <button id="btn-confirm" class="purchase">My Perfect Pizza</button>
     </div>
-  </div>
+    <!-- wa.me Widget Pizza -->
+    <div class="widget" id="widget-btn">
+      <img src="https://png.pngtree.com/png-vector/20221119/ourmid/pngtree-cheese-pizza-vector-art-png-image_6469745.png" alt="Chat Widget" />
+    </div>
+    <script>
+      /* Page() on initial page load */
+      analytics.page("Page Viewed", {
+        page: "Home Page"
+      });
+      const main = document.getElementById('main-container');
+      const builder = document.getElementById('builder-container');
 
-  <!-- WIDGET -->
-  <div class="widget" id="widget-btn">
-    <img src="https://png.pngtree.com/png-vector/20221119/ourmid/pngtree-cheese-pizza-vector-art-png-image_6469745.png"
-         alt="Chat Widget"/>
-  </div>
+      /* Ensuring the +/- from toppings works properly */
+      document.querySelectorAll('.ingredient-card').forEach(card => {
+        const minus = card.querySelector('.minus');
+        const plus = card.querySelector('.plus');
+        const input = card.querySelector('input');
+        minus.addEventListener('click', () => {
+          input.value = Math.max(0, Number(input.value) - 1);
+        });
+        plus.addEventListener('click', () => {
+          input.value = Number(input.value) + 1;
+        });
+      });
 
-<script>
-  // 1) Track initial page load
-  analytics.page("Page Viewed", { page: "Home Page" });
+      /* Sign In Process */
+      document.getElementById('signin-form').addEventListener('submit', e => {
+        e.preventDefault();
 
-  const main    = document.getElementById('main-container');
-  const builder = document.getElementById('builder-container');
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const city = document.getElementById('city').value;
 
-  // 2) Quantity +/- logic (so your plus/minus buttons keep working)
-  document.querySelectorAll('.ingredient-card').forEach(card => {
-    const minus = card.querySelector('.minus');
-    const plus  = card.querySelector('.plus');
-    const input = card.querySelector('input');
+        /* Identify() user with phone being userId, for demo purposes */
+        analytics.identify(phone, {
+          name: name,
+          phone: phone,
+          city: city
+        });
 
-    minus.addEventListener('click', () => {
-      input.value = Math.max(0, Number(input.value) - 1);
-    });
+        /* Track submittion of data, collecting info as properties */
+        analytics.track("Sign In Clicked", {
+          clicked: true,
+          name: name,
+          phone: phone,
+          city: city
+        });
+        console.log('Sign In submitted and user identified:', {
+          name,
+          phone,
+          city
+        });
+      });
 
-    plus.addEventListener('click', () => {
-      input.value = Number(input.value) + 1;
-    });
-  });
+      /* Track() click on Purchase Your Pizza */
+      document.getElementById('btn-purchase').addEventListener('click', () => {
+        analytics.track("Purchase Your Pizza Clicked", {
+          clicked: true
+        });
+        console.log('Purchase button clicked');
+      });
 
-  // 3) Sign In: IDENTIFY + TRACK
-  document.getElementById('signin-form').addEventListener('submit', e => {
-    e.preventDefault();
+      /* Track() click on Build Your Perfect Pizza + Page() on Toppings page */
+      document.getElementById('btn-build').addEventListener('click', () => {
+        main.style.display = 'none';
+        builder.style.display = 'block';
+        analytics.track("Build Your Perfect Pizza Clicked", {
+          clicked: true
+        });
+        analytics.page("Page Viewed", {
+          page: "Toppings"
+        });
+      });
 
-    // ← Grab user values *after* they click Submit
-    const name   = document.getElementById('name').value;
-    const phone  = document.getElementById('phone').value;
-    const city   = document.getElementById('city').value;
+      /* Track() click on My Perfect Pizza with the chosen toppings as properties */
+      document.getElementById('btn-confirm').addEventListener('click', () => {
+        let cheese = 0,
+          olives = 0,
+          pepperoni = 0,
+          bacon = 0,
+          corn = 0,
+          hotHoney = 0;
+        document.querySelectorAll('.ingredient-card').forEach(card => {
+          const name = card.dataset.ingredient;
+          const qty = Number(card.querySelector('input').value);
+          if (name === 'Cheese') cheese = qty;
+          if (name === 'Olives') olives = qty;
+          if (name === 'Pepperoni') pepperoni = qty;
+          if (name === 'Bacon') bacon = qty;
+          if (name === 'Corn') corn = qty;
+          if (name === 'Hot Honey') hotHoney = qty;
+        });
+        analytics.track("My Perfect Pizza Clicked", {
+          clicked: true,
+          cheese,
+          olives,
+          pepperoni,
+          bacon,
+          corn,
+          hotHoney
+        });
+        console.log('My Perfect Pizza:', {
+          cheese,
+          olives,
+          pepperoni,
+          bacon,
+          corn,
+          hotHoney
+        });
+        builder.style.display = 'none';
+        main.style.display = 'block';
+      });
 
-    // ← IDENTIFY with a real, non-empty ID
-    analytics.identify(phone, {
-      name:  name,
-      phone: phone,
-      city:  city
-    });
+      /* Track() on Merch Store */
+      document.getElementById('btn-merch').addEventListener('click', () => {
+        analytics.track("Merch Store Clicked", {
+          clicked: true
+        });
+        console.log('Merch Store clicked');
+      });
 
-    // ← Then TRACK the click, including those same traits
-    analytics.track("Sign In Clicked", {
-      clicked: true,
-      name:    name,
-      phone:   phone,
-      city:    city
-    });
-
-    console.log('Sign In submitted and user identified:', { name, phone, city });
-  });
-
-  // 4) Purchase Your Pizza
-  document.getElementById('btn-purchase').addEventListener('click', () => {
-    analytics.track("Purchase Your Pizza Clicked", { clicked: true });
-    console.log('Purchase button clicked');
-  });
-
-  // 5) Build Your Perfect Pizza
-  document.getElementById('btn-build').addEventListener('click', () => {
-    main.style.display    = 'none';
-    builder.style.display = 'block';
-    analytics.track("Build Your Perfect Pizza Clicked", { clicked: true });
-    analytics.page("Page Viewed", { page: "Toppings" });
-  });
-
-  // 6) My Perfect Pizza (confirm toppings)
-  document.getElementById('btn-confirm').addEventListener('click', () => {
-    let cheese = 0, olives = 0, pepperoni = 0, bacon = 0, corn = 0, hotHoney = 0;
-    document.querySelectorAll('.ingredient-card').forEach(card => {
-      const name = card.dataset.ingredient;
-      const qty  = Number(card.querySelector('input').value);
-      if (name === 'Cheese')    cheese   = qty;
-      if (name === 'Olives')    olives   = qty;
-      if (name === 'Pepperoni') pepperoni= qty;
-      if (name === 'Bacon')     bacon    = qty;
-      if (name === 'Corn')      corn     = qty;
-      if (name === 'Hot Honey') hotHoney = qty;
-    });
-    analytics.track("My Perfect Pizza Clicked", {
-      clicked:  true,
-      cheese,
-      olives,
-      pepperoni,
-      bacon,
-      corn,
-      hotHoney
-    });
-    console.log('My Perfect Pizza:', { cheese, olives, pepperoni, bacon, corn, hotHoney });
-    builder.style.display = 'none';
-    main.style.display    = 'block';
-  });
-
-  // 7) Merch Store
-  document.getElementById('btn-merch').addEventListener('click', () => {
-    analytics.track("Merch Store Clicked", { clicked: true });
-    console.log('Merch Store clicked');
-  });
-
-  // 8) Widget (WhatsApp)
-  document.getElementById('widget-btn').addEventListener('click', () => {
-    analytics.track("Widget Clicked", { clicked: true });
-    console.log('Widget clicked');
-    window.open('https://wa.me/5521973015191', '_blank');
-  });
-</script>
-</body>
+      /* Track() on wa.me Widget */
+      document.getElementById('widget-btn').addEventListener('click', () => {
+        analytics.track("Widget Clicked", {
+          clicked: true
+        });
+        console.log('Widget clicked');
+        window.open('https://wa.me/5521973015191', '_blank');
+      });
+    </script>
+  </body>
 </html>
