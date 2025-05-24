@@ -305,23 +305,25 @@
          alt="Chat Widget"/>
   </div>
 
-  <script>
+<script>
   // 1) Track initial page load
   analytics.page("Page Viewed", { page: "Home Page" });
 
   const main    = document.getElementById('main-container');
   const builder = document.getElementById('builder-container');
 
-  // 2) Sign In
-  document.getElementById('signin-form').addEventListener('submit', e => {
-    e.preventDefault();
+  const phoneId = document.getElementById('phone').value
 
   // 2) Identify the user in Segment
-  analytics.identify('ABC12346', {
+  analytics.identify(phoneId, {
     name: document.getElementById('name').value,
     phone: document.getElementById('phone').value,
     city: document.getElementById('city').value
   })
+
+  // 2) Sign In
+  document.getElementById('signin-form').addEventListener('submit', e => {
+    e.preventDefault();
 
     // → Track Sign In click
     analytics.track("Sign In Clicked", {
